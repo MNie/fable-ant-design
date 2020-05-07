@@ -5,5 +5,3 @@ storage:none
 nuget FSharp.Core
 nuget Fable.Core
 nuget Fable.React
-
-clitool dotnet-fable

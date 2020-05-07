@@ -10,7 +10,7 @@ build_script:
     - cmd: yarn
     - cmd: cd src/Docs
     - cmd: dotnet restore
-    - cmd: dotnet fable webpack -- -p
+    - cmd: npx webpack -- -p
 
 cache:
   - "%LOCALAPPDATA%\\Yarn"

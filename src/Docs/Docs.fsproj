@@ -99,8 +99,5 @@
     <Compile Include="State.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
-    <ItemGroup>
-    <DotNetCliToolReference Include="dotnet-fable" Version="2.0.11" />
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
