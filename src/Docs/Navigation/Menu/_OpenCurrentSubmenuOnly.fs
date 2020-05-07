@@ -1,17 +1,17 @@
 module Navigation.Menu.OpenCurrentSubmenuOnly
-open Fable.Import.Browser
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view openKeys openChange () = 
+let view openKeys openChange () =
 
   let onOpenChange (keys:string[]) =
     let latestOpenKey = keys |> Array.tryFind (fun key -> openKeys |> Array.contains key |> not )
     match latestOpenKey with
     | None -> openChange Array.empty
     | Some key -> openChange [|key|]
-    
+
   Menu.menu [
              Menu.Mode Menu.Inline
              Menu.OpenKeys openKeys
@@ -24,11 +24,11 @@ let view openKeys openChange () =
             Menu.item [Key "3"] [ str "Option 3"]
             Menu.item [Key "4"] [ str "Option 4"]
     ]
-      
+
     Menu.subMenu [Key "sub2"; Menu.Title (span [] [Icon.icon [Icon.Type "appstore"] []; str "Navigation Two"])  ] [
         Menu.item [Key "5"] [ str "Option 5"]
         Menu.item [Key "6"] [ str "Option 6"]
-        
+
         Menu.subMenu [Key "sub3"; Menu.Title (str "Submenu")  ] [
           Menu.item [Key "7"] [ str "Option 7"]
           Menu.item [Key "8"] [ str "Option 8"]

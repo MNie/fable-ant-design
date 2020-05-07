@@ -1,19 +1,19 @@
 module Navigation.Dropdown.DropdownHidding
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
 let message = Message.message
-let view isVisible dispatchVisible = 
+let view isVisible dispatchVisible =
 
-    let handleMenuClick (e:Menu.ClickParam) = 
+    let handleMenuClick (e:Menu.ClickParam) =
       if e.key = "3" then dispatchVisible false
       else message.info("Click on item " + e.key)
       // ()
-  
+
     let handleVisibleChange  (flag) = dispatchVisible flag
 
-    let menu = 
+    let menu =
       Menu.menu [Menu.OnClick handleMenuClick] [
         Menu.item [Key "1"] [ str "Clicking me will not close the menu."]
         Menu.item [Key "2"] [ str "Clicking me will not close the menu also."]

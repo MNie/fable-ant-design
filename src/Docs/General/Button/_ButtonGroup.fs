@@ -1,24 +1,24 @@
 module General.Button.ButtonGroup
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view ()= 
+let view ()=
     div [] [
         h4 [] [ str "Basic"]
         Button.group [] [
             Button.button [] [ str "Cancel" ]
-            Button.button [] [ str "OK" ] 
+            Button.button [] [ str "OK" ]
         ]
         Button.group [] [
             Button.button [Disabled true] [ str "L" ]
-            Button.button [Disabled true] [ str "M" ] 
-            Button.button [Disabled true] [ str "R" ] 
+            Button.button [Disabled true] [ str "M" ]
+            Button.button [Disabled true] [ str "R" ]
         ]
         Button.group [] [
             Button.button [] [ str "L" ]
-            Button.button [] [ str "M" ] 
-            Button.button [] [ str "R" ] 
+            Button.button [] [ str "M" ]
+            Button.button [] [ str "R" ]
         ]
         h4 [] [ str "BaWith Iconsic"]
         Button.group [] [

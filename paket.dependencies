@@ -1,12 +1,9 @@
-source https://nuget.org/api/v2
+source https://api.nuget.org/v3/index.json
 
 storage:none
 
-nuget Fable.Elmish.HMR
 nuget FSharp.Core
 nuget Fable.Core
-nuget Fable.Elmish.React
-nuget Fable.Elmish.Browser
-nuget Fable.Elmish.Debugger
+nuget Fable.React
 
 clitool dotnet-fable

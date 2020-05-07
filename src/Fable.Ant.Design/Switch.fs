@@ -3,8 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Switch =
@@ -19,11 +19,11 @@ module Switch =
         | Checked of bool
         | DefaultChecked of bool
         | OnChange of (bool -> unit)
-        | CheckedChildren of  React.ReactElement // React.ReactNode
-        | UnCheckedChildren of React.ReactElement  // React.ReactNode
+        | CheckedChildren of  ReactElement // React.ReactNode
+        | UnCheckedChildren of ReactElement  // React.ReactNode
         | Disabled of bool
         | Loading of bool
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline switch (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline switch (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Switch" "antd" (keyValueList CaseRules.LowerFirst props) children

@@ -3,7 +3,7 @@ module App.State
 open Elmish
 open Elmish.Browser.Navigation
 open Elmish.Browser.UrlParser
-open Fable.Import.Browser
+
 open Global
 open Types
 
@@ -61,37 +61,37 @@ let update msg model =
         { model with home = home }, Cmd.map HomeMsg homeCmd
     | SiderMsg collapsed ->
         { model with menuCollapsed = collapsed }, Cmd.Empty
-    | ButtonMsg msg -> 
+    | ButtonMsg msg ->
         let (button, buttonCmd) = General.Button.State.update msg model.button
         { model with button = button }, Cmd.map ButtonMsg buttonCmd
-    | IconsMsg msg -> 
+    | IconsMsg msg ->
         let (icon, iconCmd) = General.Icons.State.update msg model.icons
         { model with icons = icon }, Cmd.map IconsMsg iconCmd
-    | GridMsg msg -> 
+    | GridMsg msg ->
         let (grid, gridCmd) = Layout.Grid.State.update msg model.grid
         { model with grid = grid }, Cmd.map GridMsg gridCmd
-    | LayoutMsg msg -> 
+    | LayoutMsg msg ->
         let (layout, layoutCmd) = Layout.Layout.State.update msg model.layout
         { model with layout = layout }, Cmd.map LayoutMsg layoutCmd
-    | AffixMsg msg -> 
+    | AffixMsg msg ->
         let (affix, affixCmd) = Navigation.Affix.State.update msg model.affix
         { model with affix = affix }, Cmd.map AffixMsg affixCmd
-    | BreadcrumbMsg msg -> 
+    | BreadcrumbMsg msg ->
         let (breadcrumb, breadcrumbCmd) = Navigation.Breadcrumb.State.update msg model.breadcrumb
         { model with breadcrumb = breadcrumb }, Cmd.map BreadcrumbMsg breadcrumbCmd
-    | DropdownMsg msg -> 
+    | DropdownMsg msg ->
         let (dropdown, dropdownCmd) = Navigation.Dropdown.State.update msg model.dropdown
         { model with dropdown = dropdown }, Cmd.map DropdownMsg dropdownCmd
-    | MenuMsg msg -> 
+    | MenuMsg msg ->
         let (menu, menuCmd) = Navigation.Menu.State.update msg model.menu
         { model with menu = menu }, Cmd.map MenuMsg menuCmd
-    | PaginationMsg msg -> 
+    | PaginationMsg msg ->
         let (pagination, paginationCmd) = Navigation.Pagination.State.update msg model.pagination
         { model with pagination = pagination }, Cmd.map PaginationMsg paginationCmd
-    | StepsMsg msg -> 
+    | StepsMsg msg ->
         let (steps, stepsCmd) = Navigation.Steps.State.update msg model.steps
         { model with steps = steps }, Cmd.map StepsMsg stepsCmd
-    | AutoCompleteMsg msg -> 
+    | AutoCompleteMsg msg ->
         let (autoComplete, autoCompleteCmd) = DataEntry.AutoComplete.State.update msg model.autoComplete
         { model with autoComplete = autoComplete }, Cmd.map AutoCompleteMsg autoCompleteCmd
     | CascaderMsg msg ->

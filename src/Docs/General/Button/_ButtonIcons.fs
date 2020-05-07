@@ -1,8 +1,8 @@
 module General.Button.ButtonIcons
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [] [
       Button.button [Button.Type Button.Primary; Button.Shape Button.Circle; Button.ButtonProps.Icon "search" ] []
       Button.button [Button.Type Button.Primary; Button.ButtonProps.Icon "search" ] [str "Search"]

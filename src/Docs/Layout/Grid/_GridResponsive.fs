@@ -1,9 +1,9 @@
 module Layout.Grid.GridResponsive
 open Fable.Core
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [ ] [
       p [] [ str "Simple number"]
       Grid.row [ ] [

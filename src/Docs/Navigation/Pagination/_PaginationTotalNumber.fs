@@ -1,6 +1,6 @@
 module Navigation.Pagination.PaginationTotalNumber
-open Fable.Import.Browser
-open Fable.Helpers.React
+
+open Fable.React
 open Fable.AntD
 
 let showTotal1 total range =
@@ -9,9 +9,9 @@ let showTotal1 total range =
 
 let showTotal2 total (from, ``to``) =
   sprintf "%i-%i of %i items" from ``to`` total |> str
-  
 
-let view () = 
+
+let view () =
   div [] [
     Pagination.pagination [
       Pagination.Total 85
@@ -25,4 +25,3 @@ let view () =
       Pagination.PageSize 20
       Pagination.DefaultCurrent 1] []
   ]
-  

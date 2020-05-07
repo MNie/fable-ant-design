@@ -1,8 +1,8 @@
 module Layout.Grid.GridOffset
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [ ] [
       Grid.row [ ] [
         Grid.col [ Grid.Span 8 ] [str "col-8" ]

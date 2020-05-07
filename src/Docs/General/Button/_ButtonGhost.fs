@@ -1,9 +1,9 @@
 module General.Button.ButtonGhost
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view () = 
+let view () =
   div [Style [Background "rgb(190, 200, 200)"; Padding "26px 16px 16px" ]]
       [
         Button.button [Button.Type Button.Primary; Button.ButtonProps.Ghost true]  [str "Primary"]

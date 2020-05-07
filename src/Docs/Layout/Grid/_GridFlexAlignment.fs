@@ -1,11 +1,11 @@
 module Layout.Grid.GridFlexAlignment
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let DemoBox height children = div [ Style [ Height (sprintf "%ipx" height);LineHeight (sprintf "%ipx" height);] ] children 
+let DemoBox height children = div [ Style [ Height (sprintf "%ipx" height);LineHeight (sprintf "%ipx" height);] ] children
 
-let view () = 
+let view () =
     div [ ] [
       p [ ] [ str "Align Top" ]
       Grid.row [ Grid.Type Grid.Flex; Grid.Justify Grid.SpaceAround; Grid.Align Grid.Top ] [
@@ -33,4 +33,3 @@ let view () =
     ]
 
 
-    

@@ -1,8 +1,8 @@
 module General.Button.ButtonLoading
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view ()= 
+let view ()=
     span [] [
         Button.button [Button.Loading true; Button.Type Button.Primary] [ str "Loading" ]
         Button.button [Button.Loading true; Button.Type Button.Primary; Button.Size Button.Small] [ str "Loading" ]
@@ -14,4 +14,3 @@ let view ()=
         Button.button [Button.Loading true; Button.Type Button.Primary; Button.Shape Button.Circle] [ ]
         br []
     ]
-     

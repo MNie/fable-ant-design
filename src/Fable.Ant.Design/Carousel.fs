@@ -3,9 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Import.Browser
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Carousel =
@@ -24,8 +23,8 @@ module Carousel =
         //| style of React.CSSProperties
         | PrefixCls of string
         | Accessibility of bool
-        | NextArrow of U2<HTMLElement,obj>
-        | PrevArrow of U2<HTMLElement,obj>
+        | NextArrow of U2<Browser.Types.HTMLElement,obj>
+        | PrevArrow of U2<Browser.Types.HTMLElement,obj>
         | PauseOnHover of bool
         //| className of string
         | AdaptiveHeight of bool
@@ -54,5 +53,5 @@ module Carousel =
         | UseCSS of bool
         | SlickGoTo of float
 
-    let inline carousel (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline carousel (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Carousel" "antd" (keyValueList CaseRules.LowerFirst props) children

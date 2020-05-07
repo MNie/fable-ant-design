@@ -3,14 +3,14 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 open Props
 
 [<RequireQualifiedAccess>]
 module List =
 
     [<StringEnum>]
-    type ColumnCount =  
+    type ColumnCount =
         | [<CompiledName("1")>] One
         | [<CompiledName("2")>] Two
         | [<CompiledName("3")>] Three
@@ -22,14 +22,14 @@ module List =
 
 
     [<StringEnum>]
-    type ColumnType = 
-        | Gutter 
+    type ColumnType =
+        | Gutter
         | Column
-        | Xs 
-        | Sm 
-        | Md 
-        | Lg 
-        | Xl 
+        | Xs
+        | Sm
+        | Md
+        | Lg
+        | Xl
         | Xxl
 
     type ListGridType = {
@@ -50,42 +50,42 @@ module List =
     type ListProps =
         | Bordered of bool
         | DataSource of obj[]
-        | Extra of React.ReactElement
+        | Extra of ReactElement
         | Grid of ListGridType
         | ItemLayout of string
         | Loading of bool //U2<bool,SpinProps>; TODO
-        | LoadMore of React.ReactElement
+        | LoadMore of ReactElement
         | Pagination of obj
         | PrefixCls of string
         | RowKey of obj
-        | RenderItem of  (obj * int -> React.ReactElement)
+        | RenderItem of  (obj * int -> ReactElement)
         | Size of ListSize
         | Split of bool
-        | Header of React.ReactElement
-        | Footer of React.ReactElement
+        | Header of ReactElement
+        | Footer of ReactElement
         | Locale of obj
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    
-    let inline list (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+
+    let inline list (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "List" "antd" (keyValueList CaseRules.LowerFirst props) children
 
 
     type ListItemProps =
         | PrefixCls of string
-        | Extra of React.ReactElement
-        | Actions of React.ReactElement[]
+        | Extra of ReactElement
+        | Actions of ReactElement[]
         | Grid of ListGridType
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    type ListItemMetaProps = 
-        | Avatar of React.ReactElement
-        | Description of React.ReactElement
+    type ListItemMetaProps =
+        | Avatar of ReactElement
+        | Description of ReactElement
         | PrefixCls of string
-        | Title of React.ReactElement
-        interface Fable.Helpers.React.Props.IProp
+        | Title of ReactElement
+        interface Fable.React.Props.IProp
 
 
 
-    let inline item (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline item (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "List.Item" "antd" (keyValueList CaseRules.LowerFirst props) children

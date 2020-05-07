@@ -1,8 +1,8 @@
 module Layout.Grid.GridFlexLayout
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [ ] [
       p [ ] [ str "sub-element align left" ]
       Grid.row [ Grid.Type Grid.Flex; Grid.Justify Grid.Start ] [

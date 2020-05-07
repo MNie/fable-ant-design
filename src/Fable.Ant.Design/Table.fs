@@ -3,15 +3,15 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Table =
 
     [<StringEnum>]
     type SortOrder = Ascend | Descend
-    
+
     //(a: 'T * b: 'T * sortOrder: SortOrder option) -> int
     type CompareFn<'T> = 'T -> 'T -> SortOrder option -> int
 
@@ -22,17 +22,17 @@ module Table =
 
     [<StringEnum>]
     type ColumnFixed = Left | Right
-    
+
     type ColumnProps<'T> =
-        | Title of React.ReactElement
+        | Title of Reactyarn Element
         //key?: React.Key;
         | DataIndex of string
-        | Render of (obj -> 'T -> int -> React.ReactElement)
+        | Render of (obj -> 'T -> int -> ReactElement)
         | Align of ColumnAlign
         | Filters of ColumnFilterItem[]
         | OnFilter of (obj -> 'T -> bool)
         | FilterMultiple of bool
-        | FilterDropdown of React.ReactElement
+        | FilterDropdown of ReactElement
         | FilterDropdownVisible of bool
         | OnFilterDropdownVisibleChange of (bool -> unit)
         | Sorter of  U2<bool, CompareFn<'T>>
@@ -41,7 +41,7 @@ module Table =
         | Width of U2<string,int>
         //|className?: string;
         | Fixed of U2<bool, ColumnFixed>
-        | FilterIcon of React.ReactNode
+        | FilterIcon of Browser.Types.Node
         | FilteredValue of obj[]
         | SortOrder of SortOrder
         //children?: ColumnProps<T>[]
@@ -76,7 +76,7 @@ module Table =
     [<StringEnum>]
     type RowSelectionType = Checkbox | Radio
 
-    type SelectionSelectFn<'T> = 'T -> bool -> obj[] -> Browser.Event -> obj
+    type SelectionSelectFn<'T> = 'T -> bool -> obj[] -> Browser.Types.Event -> obj
 
     [<StringEnum>]
     type TablePaginationPosition = Top | Bottom | Both
@@ -87,13 +87,13 @@ module Table =
     [<StringEnum>]
     type TableSelectWay = OnSelect | OnSelectAll | OnSelectInvert
 
-    
+
     type SelectionItemSelectFn = string[] -> obj
 
     [<Pojo>]
     type SelectionItem = {
           key: string;
-          text: React.ReactNode;
+          text: Browser.Types.Node;
           onSelect: SelectionItemSelectFn;
     }
 
@@ -226,7 +226,7 @@ export interface FilterMenuState {
 
     type SwitchProps =
         | PrefixCls of string
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline table (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline table (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Table" "antd" (keyValueList CaseRules.LowerFirst props) children

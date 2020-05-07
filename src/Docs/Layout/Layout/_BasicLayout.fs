@@ -1,8 +1,8 @@
 module Layout.Layout.BasicLayout
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [] [
       Layout.layout [] [
         Layout.header [] [str "Header"]
@@ -37,4 +37,3 @@ let view () =
         ]
       ]
     ]
-    

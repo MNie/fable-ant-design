@@ -1,9 +1,9 @@
 module General.Icons.IconDemo
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view () = 
+let view () =
     div [Style [FontSize 48]] [
       Icon.icon [ Icon.Type "api" ] []
       Icon.icon [ Icon.Type "api" ; Icon.Title "Api"] []

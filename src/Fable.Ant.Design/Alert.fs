@@ -3,8 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Alert =
@@ -14,10 +14,10 @@ module Alert =
     type AffixProps =
         | Type of AlertType
         | Closable of bool
-        | CloseText of React.ReactNode
-        | Message of React.ReactNode
-        | Description of React.ReactNode
-        | OnClose of React.MouseEventHandler
+        | CloseText of Browser.Types.Node
+        | Message of Browser.Types.Node
+        | Description of Browser.Types.Node
+        | OnClose of Browser.Types.MouseEvent
         | AfterClose of (unit -> unit)
         | ShowIcon of bool
         | IconType of string
@@ -25,7 +25,7 @@ module Alert =
         | PrefixCls of string
         //className?: string;
         | Banner of bool
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline alert (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline alert (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Alert" "antd" (keyValueList CaseRules.LowerFirst props) children

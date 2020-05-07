@@ -12,22 +12,22 @@ importAll "../../node_modules/antd/dist/antd.less"
 importAll "./app.less"
 let logo = importAll "./assets/img/fantle-design.png"
 
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 open Fable.Import
 
 let menuItem info =
     Menu.item [ HTMLAttr.Custom ("key", info.title) ]
-              [ a [Href info.hash ] 
+              [ a [Href info.hash ]
                   [
                     Icon.icon [ Icon.Type info.icon ] []
-                    span [ ] [ str info.title ] 
+                    span [ ] [ str info.title ]
                   ]
-                
+
               ]
 
-let subMenu icon title pages = 
+let subMenu icon title pages =
   Menu.subMenu [Menu.SubMenuProps.Title (a [] [Icon.icon [Type icon] []; span [] [str title] ] )]
                [ for p in pages -> p |> getMenuInfo |> menuItem ]
 
@@ -35,9 +35,9 @@ let subMenu icon title pages =
 let menuSider menuCollapsed currentPage dispatch =
   Layout.sider [ Layout.OnCollapse (fun args -> fun t ->
     Browser.console.log (sprintf "%A %A" args t) |> ignore
-    (SiderMsg (args) |> dispatch )); 
+    (SiderMsg (args) |> dispatch ));
     Layout.Collapsible true; Layout.Collapsed menuCollapsed; Layout.Width 256; Layout.Breakpoint Layout.SiderBreakpoint.LG; Layout.Trigger null ] [
-        div [ Style [ Height "64px"; Position "relative"; LineHeight "64px"; PaddingLeft "24px"; Transition "all .3s"; Background "#002140"; Overflow "hidden"] ] [ 
+        div [ Style [ Height "64px"; Position "relative"; LineHeight "64px"; PaddingLeft "24px"; Transition "all .3s"; Background "#002140"; Overflow "hidden"] ] [
             a [Href "/#"; Style [ ]] [
               img [Src logo; Style [ Height "32px";] ]
               h1 [ Style [Display "inline-block"; VerticalAlign "middle";  CSSProp.Color "#fff"; FontSize "20px"; Margin "0 0 0 12px"; FontFamily "\"Myriad Pro\",\"Helvetica Neue\",Arial,Helvetica,sans-serif"; FontWeight 600]] [str "Fable Ant Design"]
@@ -72,15 +72,15 @@ let menuSider menuCollapsed currentPage dispatch =
                     Page.Form
                     Page.Input
                   ]
-                 
-              ] 
+
+              ]
       ]
 
-let header menuCollapsed dispatch = 
+let header menuCollapsed dispatch =
   Layout.header [ Style [Background "white"; Padding "0"] ]
-          [ Icon.icon [ ClassName "trigger";  
-                        Icon.Type (if menuCollapsed then "menu-unfold" else "menu-fold");   
-                        OnClick (fun _ -> (SiderMsg (not menuCollapsed) |> dispatch )); 
+          [ Icon.icon [ ClassName "trigger";
+                        Icon.Type (if menuCollapsed then "menu-unfold" else "menu-fold");
+                        OnClick (fun _ -> (SiderMsg (not menuCollapsed) |> dispatch ));
                         Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
                       ] [ ]
           ]
@@ -105,23 +105,23 @@ let root model dispatch =
     | Page.Cascader -> DataEntry.Cascader.View.render model.cascader (CascaderMsg >> dispatch)
     | _ -> div [] [ str "404 !!!"]
 
-  div [] [ 
+  div [] [
     Layout.layout [] [
       menuSider model.menuCollapsed model.currentPage dispatch
       Layout.layout [] [
         header model.menuCollapsed dispatch
-        
+
         Layout.content [ Style [ Margin "24px 16px"; Padding 24; Background "#fff"; MinHeight 700 ] ]
           [
             pageHtml model.currentPage
-            
+
           ]
         Layout.footer [] [str ""]
        ]
     ]
   ]
-  
-     
+
+
 
 open Elmish.React
 open Elmish.Debug

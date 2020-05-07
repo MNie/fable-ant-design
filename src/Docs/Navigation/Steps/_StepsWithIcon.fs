@@ -1,8 +1,8 @@
 module Navigation.Steps.StepsWithIcon
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
   Steps.steps [] [
     Steps.step [Steps.Status Steps.Finish; Steps.Title (str "Login"); Steps.Icon (Icon.icon [Icon.Type "user"] [])] []
     Steps.step [Steps.Status Steps.Finish; Steps.Title (str "Verification"); Steps.Icon (Icon.icon [Icon.Type "solution"] [])] []

@@ -3,13 +3,13 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Anchor =
 
-    // Window ??? 
+    // Window ???
     type AnchorContainer =  HTMLElement | Window
 
     type AnchorProps  =
@@ -22,17 +22,17 @@ module Anchor =
         | Affix of bool
         | ShowInkInFixed of bool
         | GetContainer of (unit -> AnchorContainer)
-        interface Fable.Helpers.React.Props.IProp
+        interface Props.IProp
 
-    let inline anchor (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline anchor (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Anchor" "antd" (keyValueList CaseRules.LowerFirst props) children
 
     type AnchorLinkProps  =
         | PrefixCls of string
         | Href of string
-        | Title of React.ReactElement // node
+        | Title of ReactElement // node
         //children?: any;
-        interface Fable.Helpers.React.Props.IProp
+        interface Props.IProp
 
-    let inline link (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline link (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Anchor.Link" "antd" (keyValueList CaseRules.LowerFirst props) children

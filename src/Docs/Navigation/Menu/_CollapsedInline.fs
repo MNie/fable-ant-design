@@ -1,14 +1,14 @@
 module Navigation.Menu.CollapsedInline
-open Fable.Import.Browser
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view collapsed toggleCollapsed   () = 
-  
+let view collapsed toggleCollapsed   () =
+
   let handleClick (e:Menu.ClickParam) =
     console.log("click ", e)
-    
+
   div [Style [Width 256];] [
     Button.button [Button.Type Button.Primary; OnClick (fun _ -> not collapsed |> toggleCollapsed)  ;Style [MarginBottom 16] ] [
       Icon.icon [Icon.Type (if collapsed then "menu-unfold" else "menu-fold")] []
@@ -27,14 +27,13 @@ let view collapsed toggleCollapsed   () =
       Menu.subMenu [Key "sub2"; Menu.Title (span [] [Icon.icon [Icon.Type "appstore"] []; span [] [str "Navigation Two"]])  ] [
           Menu.item [Key "9" ] [ str "Option 9" ]
           Menu.item [Key "10"] [ str "Option 10"]
-          
+
           Menu.subMenu [Key "sub3"; Menu.Title (str "Submenu")  ] [
             Menu.item [Key "11"] [ str "Option 11"]
             Menu.item [Key "12"] [ str "Option 12"]
           ]
         ]
-      
+
       ]
-  ] 
-  
-  
+  ]
+

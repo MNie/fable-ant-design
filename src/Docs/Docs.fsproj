@@ -31,7 +31,7 @@
     <Compile Include="Layout/Grid/_GridFlexOrder.fs" />
     <Compile Include="Layout/Grid/_GridResponsive.fs" />
     <Compile Include="Layout/Grid/Grid.fs" />
-    
+
     <Compile Include="Layout/Layout/_BasicLayout.fs" />
     <Compile Include="Layout/Layout/Layout.fs" />
 
@@ -97,10 +97,10 @@
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
-    <Compile Include="App.fs" /> 
-  </ItemGroup> 
+    <Compile Include="App.fs" />
+  </ItemGroup>
     <ItemGroup>
-    <DotNetCliToolReference Include="dotnet-fable" Version="1.3.14" />
+    <DotNetCliToolReference Include="dotnet-fable" Version="2.0.11" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

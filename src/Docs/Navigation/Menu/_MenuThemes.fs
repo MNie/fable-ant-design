@@ -1,9 +1,9 @@
 module Navigation.Menu.MenuThemes
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view theme changeTheme () = 
+let view theme changeTheme () =
 
   div [ ] [
     Switch.switch [ Switch.Checked (theme = Menu.Dark); Switch.OnChange changeTheme; Switch.CheckedChildren (str "Dark"); Switch.UnCheckedChildren (str "Light") ] []
@@ -23,7 +23,7 @@ let view theme changeTheme () =
       Menu.subMenu [Key "sub2"; Menu.Title (span [] [Icon.icon [Icon.Type "appstore"] []; str "Navigation Two"])  ] [
           Menu.item [Key "5"] [ str "Option 5"]
           Menu.item [Key "6"] [ str "Option 6"]
-          
+
           Menu.subMenu [Key "sub3"; Menu.Title (str "Submenu")  ] [
             Menu.item [Key "7"] [ str "Option 7"]
             Menu.item [Key "8"] [ str "Option 8"]
@@ -37,4 +37,3 @@ let view theme changeTheme () =
         ]
   ]
   ]
-  

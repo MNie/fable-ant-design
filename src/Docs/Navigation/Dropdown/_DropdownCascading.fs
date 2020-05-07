@@ -1,12 +1,12 @@
 module Navigation.Dropdown.DropdownCascading
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
 let link href text =
-  a [Target "_blank"; Rel "noopener noreferrer"; Href href ] [str text ] 
+  a [Target "_blank"; Rel "noopener noreferrer"; Href href ] [str text ]
 
-let menu = 
+let menu =
   Menu.menu [] [
     Menu.item [] [ str "1st menu item"]
     Menu.item [] [ str "2nd menu item"]
@@ -19,7 +19,7 @@ let menu =
       Menu.item [] [ str "6th menu item"]
     ]
   ]
-let view () = 
+let view () =
     Dropdown.dropdown [Dropdown.Overlay menu] [
       a [ClassName "ant-dropdown-link"; Href "#"] [
         str "Hover me "

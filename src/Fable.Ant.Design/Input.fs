@@ -3,8 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Input =
@@ -16,7 +16,7 @@ module Input =
         | Value of obj
         | TabIndex of int
         //style?: React.CSSProperties;
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
     type InputProps  =
         | Placeholder of string
@@ -27,25 +27,24 @@ module Input =
         | MaxLength of int //?: number | string
         | Disabled of bool
         | ReadOnly of bool
-        | AddonBefore of React.ReactNode
-        | AddonAfter of React.ReactNode
-        | OnPressEnter of React.FormEventHandler
-        | OnKeyDown of React.FormEventHandler
-        | OnKeyUp of React.FormEventHandler
-        | OnChange of React.FormEventHandler  //React.ChangeEventHandler
-        | OnClick of React.FormEventHandler
-        | OnFocus of React.FormEventHandler
-        | OnBlur of React.FormEventHandler
+        | AddonBefore of Browser.Types.Node
+        | AddonAfter of Browser.Types.Node
+        | OnPressEnter of Browser.Types.Event
+        | OnKeyDown of Browser.Types.KeyboardEvent
+        | OnKeyUp of Browser.Types.KeyboardEvent
+        | OnChange of Browser.Types.Event  //React.ChangeEventHandler
+        | OnClick of Browser.Types.MouseEvent
+        | OnFocus of Browser.Types.FocusEvent
+        | OnBlur of Browser.Types.FocusEvent
         | AutoComplete of string
-        | Prefix of React.ReactNode
-        | Suffix of React.ReactNode
+        | Prefix of Browser.Types.Node
+        | Suffix of Browser.Types.Node
         | SpellCheck of bool
         | AutoFocus of bool
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline input (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline input (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Input" "antd" (keyValueList CaseRules.LowerFirst props) children
-
 
     type GroupProps =
         //className?: string;
@@ -54,30 +53,28 @@ module Input =
         //style?: React.CSSProperties;
         | PrefixCls of string
         | Compact of bool
-        interface Fable.Helpers.React.Props.IProp
-    
-    let inline group (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+        interface Fable.React.Props.IProp
+
+    let inline group (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Input.Group" "antd" (keyValueList CaseRules.LowerFirst props) children
 
     type SearchProps =
         | InputPrefixCls of string
         | OnSearch of (string -> unit)
-        | EnterButton of U2<bool, React.ReactNode>
-        interface Fable.Helpers.React.Props.IProp
+        | EnterButton of U2<bool, Browser.Types.Node>
+        interface Fable.React.Props.IProp
 
-    let inline search (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline search (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Input.Search" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    
     type AutoSizeType = {minRows: int option; maxRows: int option}
 
     type TextAreaProps =
         | Autosize of U2<bool, AutoSizeType>
-        | OnPressEnter of React.FormEventHandler
-        interface Fable.Helpers.React.Props.IProp
-        
+        | OnPressEnter of Browser.Types.KeyboardEvent
+        interface Fable.React.Props.IProp
 
     //type HTMLTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-    let inline textarea (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline textarea (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Input.TextArea" "antd" (keyValueList CaseRules.LowerFirst props) children

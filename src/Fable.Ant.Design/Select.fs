@@ -3,8 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 /// import declarations for `Select` and its nested components.
 /// For more information, refer to the [official documentation](https://ant.design/components/select/)
@@ -16,17 +16,17 @@ module Select =
         | Key of string
         | Title of string
         | Value of U2<string,float>
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline option (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline option (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Select.Option" "antd" (keyValueList CaseRules.LowerFirst props) children
 
     type OptGroupProps =
         | Key of string
-        | Value of U2<string,React.ReactElement>
-        interface Fable.Helpers.React.Props.IProp
+        | Value of U2<string,ReactElement>
+        interface Fable.React.Props.IProp
 
-    let inline optGroup (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline optGroup (props: IProp list) (children: ReactElement list): ReactElement =
         ofImport "Select.OptGroup" "antd" (keyValueList CaseRules.LowerFirst props) children
 
     [<StringEnum>]
@@ -63,7 +63,7 @@ module Select =
         /// Parent Node which the selector should be rendered to. Default to body.
         /// When position issues happen, try to modify it into scrollable content and position it relative.
         /// [Example](https://codesandbox.io/s/4j168r7jw0)
-        | GetPopupContainer of (React.ReactNode -> unit)
+        | GetPopupContainer of (Browser.Types.Node -> unit)
         /// whether to embed label in value, turn the format of value
         /// from `string` to `{key: string, label: ReactNode}`. Default: false
         | LabelInValue of bool
@@ -71,7 +71,7 @@ module Select =
         | MaxTagCount of float
         /// Placeholder for not showing tags. Can be a replacement node or
         /// a compensation function that works on ommited values
-        | MaxTagPlaceholder of U2<React.ReactNode,(OptionValue list -> unit)>
+        | MaxTagPlaceholder of U2<Browser.Types.Node,(OptionValue list -> unit)>
         /// Set mode of Select (Support after 2.9)
         | Mode of SelectMode
         /// Specify content to show when no result matches.
@@ -81,7 +81,7 @@ module Select =
         | OptionFilterProp of string
         | OptionLabelProp of string
         /// Placeholder of select
-        | Placeholder of U2<string,React.ReactNode>
+        | Placeholder of U2<string,Browser.Types.Node>
         /// Whether show search input in single mode.
         | ShowSearch of bool
         /// Whether to show the drop-down arrow
@@ -103,17 +103,17 @@ module Select =
         /// Called when focus
         | OnFocus of (unit -> unit)
         /// Called when key pressed
-        | OnInputKeyDown of (React.KeyboardEvent -> unit)
+        | OnInputKeyDown of (Browser.Types.KeyboardEvent -> unit)
         /// Called when mouse enter
-        | OnMouseEnter of (React.MouseEvent -> unit)
+        | OnMouseEnter of (Browser.Types.MouseEvent -> unit)
         /// Called when mouse leave
-        | OnMouseLeave of (React.MouseEvent -> unit)
+        | OnMouseLeave of (Browser.Types.MouseEvent -> unit)
         /// Called when dropdown scrolls
         | OnPopupScroll of (unit -> unit)
         /// Callback function that is fired when input changed.
         | OnSearch of (string -> unit)
         | OnSelect of (OptionValue -> unit)
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-      let inline select (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+      let inline select (props: IProp list) (children: ReactElement list): ReactElement =
         ofImport "Select" "antd" (keyValueList CaseRules.LowerFirst props) children

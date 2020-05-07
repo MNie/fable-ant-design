@@ -17,7 +17,7 @@ module Types =
         customizedDataSource: AutoComplete.DataSourceItemType []
         customizeInputComponentDataSource: AutoComplete.DataSourceItemType []
         NonCaseSensitiveDataSource: AutoComplete.DataSourceItemType []
-    } 
+    }
 
     type Msg =
       | ChangeTabMsg of Demos * DemoCard.Types.Tab
@@ -28,23 +28,23 @@ module Types =
 open Types
 
 module State =
-    
-    let updateBasicDataSource (value:string) = 
-      match value with 
+
+    let updateBasicDataSource (value:string) =
+      match value with
       | null | "" -> [||]
       | _ -> [|1..3|] |> Array.map (fun i -> String.replicate i value |> U2.Case1 )
 
-    let updateCustomizedDataSource value = 
-      match value with 
+    let updateCustomizedDataSource value =
+      match value with
       | null | "" -> [||]
       | s when (s.Contains "@") -> [||]
       | _ -> [|"gmail.com"; "yahoo.com"; "live.com"|] |> Array.map (fun domain -> value + "@"+ domain |> U2.Case1 )
-      
+
 
     let init () : Model * Cmd<Msg> =
-      
-      let tabs = [ Basic; Customized; CustomizeInputComponent; NonCaseSensitive; LookupPatternsCertainCategory]  
-                    |> List.map (fun x->x,DemoCard.Types.Demo) 
+
+      let tabs = [ Basic; Customized; CustomizeInputComponent; NonCaseSensitive; LookupPatternsCertainCategory]
+                    |> List.map (fun x->x,DemoCard.Types.Demo)
                     |>  Map.ofList
       { tabs = tabs; basicDataSource = [||]; customizedDataSource = [||]; customizeInputComponentDataSource = [||]; NonCaseSensitiveDataSource = [||] }, Cmd.Empty
 
@@ -58,50 +58,50 @@ module State =
 
 module View =
 
-    open Fable.Helpers.React
+    open Fable.React
     open DemoCard.Types
 
-    
+
     let root (model:Model) (dispatch:Msg->unit) =
 
       let demos =
-        [| Basic, { 
-            title = "Basic"; 
-            demo = DataEntry.AutoComplete.AutoCompleteBasic.view model.basicDataSource (SearchBasicMsg >> dispatch); 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteBasic.fs"; 
-            activeTab = DemoCard.Types.Demo 
-            }
-           Customized, { 
-            title = "Customized" ; 
-            demo = DataEntry.AutoComplete.AutoCompleteCustomized.view model.customizedDataSource (SearchCustomizedMsg >> dispatch); 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteCustomized.fs"; 
-            activeTab = DemoCard.Types.Demo 
-            }
-           CustomizeInputComponent, { 
-            title = "Customize input component" ; 
-            demo = DataEntry.AutoComplete.AutoCompleteCustomizeInputComponent.view model.customizeInputComponentDataSource (SearchCustomizeInputComponentMsg >> dispatch); 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteCustomizeInputComponent.fs"; 
+        [| Basic, {
+            title = "Basic";
+            demo = DataEntry.AutoComplete.AutoCompleteBasic.view model.basicDataSource (SearchBasicMsg >> dispatch);
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteBasic.fs";
             activeTab = DemoCard.Types.Demo
             }
-           NonCaseSensitive, { 
-            title = "Non-case-sensitive AutoComplete" ; 
+           Customized, {
+            title = "Customized" ;
+            demo = DataEntry.AutoComplete.AutoCompleteCustomized.view model.customizedDataSource (SearchCustomizedMsg >> dispatch);
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteCustomized.fs";
+            activeTab = DemoCard.Types.Demo
+            }
+           CustomizeInputComponent, {
+            title = "Customize input component" ;
+            demo = DataEntry.AutoComplete.AutoCompleteCustomizeInputComponent.view model.customizeInputComponentDataSource (SearchCustomizeInputComponentMsg >> dispatch);
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteCustomizeInputComponent.fs";
+            activeTab = DemoCard.Types.Demo
+            }
+           NonCaseSensitive, {
+            title = "Non-case-sensitive AutoComplete" ;
             demo = DataEntry.AutoComplete.AutoCompleteNonCaseSensitive.view;
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteNonCaseSensitive.fs"; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteNonCaseSensitive.fs";
             activeTab = DemoCard.Types.Demo
             }
-           LookupPatternsCertainCategory, { 
-            title = "Lookup-Patterns - Certain Category" ; 
+           LookupPatternsCertainCategory, {
+            title = "Lookup-Patterns - Certain Category" ;
             demo = DataEntry.AutoComplete.AutoCompleteLookupPatternsCertainCategory.view;
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteLookupPatternsCertainCategory.fs"; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteLookupPatternsCertainCategory.fs";
             activeTab = DemoCard.Types.Demo
             }
-          
+
         |] |> Map.ofArray
-    
-      let renderDemo demo = 
-        DemoCard.View.root {demos.[demo] with activeTab = model.tabs.[demo] }  (fun msg -> ChangeTabMsg (demo, msg) |> dispatch  ) 
+
+      let renderDemo demo =
+        DemoCard.View.root {demos.[demo] with activeTab = model.tabs.[demo] }  (fun msg -> ChangeTabMsg (demo, msg) |> dispatch  )
 
       div [ ] [
-        yield h1 [] [str "AutoComplete"] 
+        yield h1 [] [str "AutoComplete"]
         yield! ([ Basic; Customized; CustomizeInputComponent; NonCaseSensitive; LookupPatternsCertainCategory ] |> List.map renderDemo)
         ]

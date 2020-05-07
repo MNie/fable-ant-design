@@ -1,15 +1,15 @@
 module Navigation.Menu.InlineMenu
-open Fable.Import.Browser
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view () = 
-  
+let view () =
+
   let handleClick (e:Menu.ClickParam) =
     console.log("click ", e)
-    
-  
+
+
   Menu.menu [Style [Width 256]; Menu.OnClick handleClick; Menu.DefaultSelectedKeys [|"1"|]; Menu.DefaultOpenKeys [|"sub1"|]; Menu.Mode Menu.Inline] [
     Menu.subMenu [Key "sub1"; Menu.Title (span [] [Icon.icon [Icon.Type "mail"] []; str "Navigation One"])  ] [
         Menu.itemGroup [Key "g1"; Menu.Title (str "Item 1")   ] [
@@ -24,7 +24,7 @@ let view () =
     Menu.subMenu [Key "sub2"; Menu.Title (span [] [Icon.icon [Icon.Type "appstore"] []; str "Navigation Two"])  ] [
         Menu.item [Key "5"] [ str "Option 5"]
         Menu.item [Key "6"] [ str "Option 6"]
-        
+
         Menu.subMenu [Key "sub3"; Menu.Title (str "Submenu")  ] [
           Menu.item [Key "7"] [ str "Option 7"]
           Menu.item [Key "8"] [ str "Option 8"]

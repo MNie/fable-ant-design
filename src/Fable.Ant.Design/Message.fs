@@ -3,22 +3,18 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-
-
 
 [<RequireQualifiedAccess>]
 module Message =
 
     type MessageConfig = {
         duration:float // time before auto-dismiss, in seconds
-        getContainer: unit -> Browser.HTMLElement // Return the mount node for Message
+        getContainer: unit -> Browser.Types.HTMLElement // Return the mount node for Message
         top:int // distance from top
         maxCount:int // max message show, drop oldest if exceed limit
     }
 
-    type IMessage = 
+    type IMessage =
         abstract success : string -> unit
         [<Emit("$0.success($1,$2)")>]
         abstract success' : string * float -> unit

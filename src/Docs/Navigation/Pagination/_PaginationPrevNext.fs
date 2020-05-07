@@ -1,5 +1,5 @@
 module Navigation.Pagination.PaginationPrevNext
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
 let itemRender current ``type`` originalElement =
@@ -9,8 +9,8 @@ let itemRender current ``type`` originalElement =
   | _ -> originalElement
 
 
-let view () = 
+let view () =
   Pagination.pagination [
     Pagination.Total 500
-    Pagination.ItemRender itemRender 
+    Pagination.ItemRender itemRender
     ] []

@@ -1,11 +1,11 @@
 module Navigation.Pagination.PaginationMiniSize
 open Fable.AntD
-open Fable.Helpers.React
+open Fable.React
 
 let showTotal total _ =
   sprintf "Total %i items" total |> str
 
-let view () = 
+let view () =
   div [] [
     Pagination.pagination [
       Pagination.Size Pagination.Small
@@ -22,4 +22,3 @@ let view () =
       Pagination.Total 50
       Pagination.ShowTotal showTotal ] []
   ]
-  

@@ -1,9 +1,9 @@
 module General.Button.ButtonDisabled
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view () = 
+let view () =
     div [] [
       Button.button [Button.Type Button.Primary] [ str "Primary" ]
       Button.button [Button.Type Button.Primary; Disabled true] [ str "Primary(disabled)" ]

@@ -3,7 +3,7 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 open Props
 
 [<RequireQualifiedAccess>]
@@ -11,7 +11,7 @@ module Layout =
 
     type LayoutProps =
         | HasSider of bool
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
     [<StringEnum>]
     type SiderBreakpoint =
@@ -23,10 +23,10 @@ module Layout =
         | [<CompiledName("xxl")>] XXL
 
     [<StringEnum>]
-    type CollapseType = 
+    type CollapseType =
         | [<CompiledName("clickTrigger")>] ClickTrigger
         | [<CompiledName("responsive")>] Responsive
-        
+
     // [<Pojo>]
     // type SiderCollapseArgs = { collapsed:bool; ``type``:CollapseType }
 
@@ -40,20 +40,20 @@ module Layout =
         | ReverseArrow of bool
         | Width of int
         | OnCollapse of (bool -> CollapseType -> unit)
-        interface Fable.Helpers.React.Props.IProp
-    
-    let inline layout (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+        interface Fable.React.Props.IProp
+
+    let inline layout (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Layout" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    let inline header (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline header (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Layout.Header" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    let inline content (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline content (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Layout.Content" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    let inline footer  (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline footer  (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Layout.Footer" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    let inline sider (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline sider (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Layout.Sider" "antd" (keyValueList CaseRules.LowerFirst props) children
 

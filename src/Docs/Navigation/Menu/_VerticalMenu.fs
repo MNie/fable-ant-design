@@ -1,9 +1,9 @@
 module Navigation.Menu.VerticalMenu
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let view () = 
+let view () =
 
   Menu.menu [Style [Width 256]; Menu.Mode Menu.Vertical] [
     Menu.subMenu [Key "sub1"; Menu.Title (span [] [Icon.icon [Icon.Type "mail"] []; str "Navigation One"])  ] [
@@ -19,7 +19,7 @@ let view () =
     Menu.subMenu [Key "sub2"; Menu.Title (span [] [Icon.icon [Icon.Type "appstore"] []; str "Navigation Two"])  ] [
         Menu.item [Key "5"] [ str "Option 5"]
         Menu.item [Key "6"] [ str "Option 6"]
-        
+
         Menu.subMenu [Key "sub3"; Menu.Title (str "Submenu")  ] [
           Menu.item [Key "7"] [ str "Option 7"]
           Menu.item [Key "8"] [ str "Option 8"]

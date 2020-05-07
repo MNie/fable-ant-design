@@ -1,11 +1,11 @@
 module Layout.Grid.GridFlexOrder
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
-let DemoBox height children = div [ Style [ Height (sprintf "%ipx" height);LineHeight (sprintf "%ipx" height);] ] children 
+let DemoBox height children = div [ Style [ Height (sprintf "%ipx" height);LineHeight (sprintf "%ipx" height);] ] children
 
-let view () = 
+let view () =
     div [ ] [
       Grid.row [ Grid.Type Grid.Flex ] [
         Grid.col [ Grid.Span 6; Grid.Order 4 ]  [ str "1 but order 4" ]

@@ -1,19 +1,19 @@
 module Navigation.Dropdown.DropdownPlacement
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.AntD
 
 let link href text =
-  a [Target "_blank"; Rel "noopener noreferrer"; Href href ] [str text ] 
+  a [Target "_blank"; Rel "noopener noreferrer"; Href href ] [str text ]
 
-let menu = 
+let menu =
   Menu.menu [] [
     Menu.item [] [ link "http://www.alipay.com/" "1st menu item"]
     Menu.item [] [ link "http://www.taobao.com/" "2nd menu item"]
     Menu.item [] [ link "http://www.tmall.com/" "3rd menu item"]
   ]
-let view () = 
-    div [] [ 
+let view () =
+    div [] [
       Dropdown.dropdown [Dropdown.Overlay menu; Dropdown.Placement Dropdown.BottomLeft] [
         Button.button [] [str "bottomLeft"]
       ]

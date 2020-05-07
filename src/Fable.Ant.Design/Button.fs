@@ -3,8 +3,8 @@ namespace Fable.AntD
 open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Button =
@@ -26,7 +26,7 @@ module Button =
     type ButtonShape =
         | Circle
         | [<CompiledName("circle-outline")>] CircleOutline
-    
+
     type ButtonProps =
         | Ghost of bool
         | Href of string
@@ -37,10 +37,10 @@ module Button =
         | Shape of ButtonShape
         | Size of ButtonSize
         | Loading of bool
-        interface Fable.Helpers.React.Props.IProp
+        interface Fable.React.Props.IProp
 
-    let inline button (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline button (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Button" "antd" (keyValueList CaseRules.LowerFirst props) children
 
-    let inline group (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+    let inline group (props: IProp list) (children: ReactElement list): ReactElement =
        ofImport "Button.Group" "antd" (keyValueList CaseRules.LowerFirst props) children

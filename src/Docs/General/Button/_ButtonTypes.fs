@@ -1,8 +1,8 @@
 module General.Button.ButtonTypes
-open Fable.Helpers.React
+open Fable.React
 open Fable.AntD
 
-let view () = 
+let view () =
     div [] [
       Button.button []                [str "Default"]
       Button.button [Button.Type Button.Primary]  [str "Primary"]
